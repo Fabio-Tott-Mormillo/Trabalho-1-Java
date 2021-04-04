@@ -1,3 +1,6 @@
+//Fabio Tott Mormillo RA: 19.00176-2
+// Conrado Pupo Azzalin RA:19.01490-2
+
 import java.util.Random;
 import java.util.Scanner;
 
