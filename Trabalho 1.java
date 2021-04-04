@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 class User {
   private String Name;
@@ -85,8 +86,6 @@ class Transacao {
     if(recebedor.getIdConta() != Integer.parseInt(dados[0]))
       return "ID da conta incorreta";
 
-    System.out.println(recebedor.getUser().getName()); 
-    System.out.println(dados[1]); 
     if(recebedor.getUser().getName() == dados[1])
       return "Nome do recebedor incorreto";
 
@@ -103,20 +102,39 @@ class Transacao {
 
 class Main {  
   public static void main(String args[]) { 
-    User u1 = new User("Fabio", "123", "email@ermail");
-    User u2 = new User("Bruno", "123", "email@ermail");
+    Scanner ler = new Scanner(System.in);
+    System.out.println("Informe o nome do usuário 1:");
+    String name1 = ler.nextLine();
+    System.out.println("Informe o nome do usuário 2:");
+    String name2 = ler.nextLine();
+    System.out.println("Informe o nome do usuário 3:");
+    String name3 = ler.nextLine();
 
-    Conta acc1 = new Conta(1, 2000, u1);
-    Conta acc2 = new Conta(2, 2000, u2);
+    User u1 = new User(name1, "123", "email@email");
+    User u2 = new User(name2, "123", "email@email");
+    User u3 = new User(name3, "123", "email@email");
+
+    Conta acc1 = new Conta(1, 1000, u1);
+    Conta acc2 = new Conta(2, 250, u2);
+    Conta acc3 = new Conta(3, 3000, u3);
 
     Transacao t = new Transacao();
 
-    String st = t.getTransacaoString(1, "Fabio", 60);
-    System.out.println(st); 
+    System.out.println("Estado Inicial:");
+    System.out.printf("Nome de usuário: %s - Saldo: %f", name1, acc1.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %f", name2, acc2.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %f", name3, acc3.getSaldo());
+
+    String st = t.getTransacaoString(1, name1, 250);
     String trans = t.realizarTransferencia(acc2, acc1, st);
-    
-    System.out.println(trans); 
-    System.out.println(acc1.getSaldo()); 
-    System.out.println(acc2.getSaldo()); 
+    String trans1 = t.realizarTransferencia(acc3, acc1, st);
+
+    String st1 = t.getTransacaoString(1, name2, 1000);
+    String trans2 = t.realizarTransferencia(acc3, acc2, st1);
+
+    System.out.println("\nEstado Final:");
+    System.out.printf("Nome de usuário: %s - Saldo: %f", name1, acc1.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %f", name2, acc2.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %f", name3, acc3.getSaldo());
   } 
 }
