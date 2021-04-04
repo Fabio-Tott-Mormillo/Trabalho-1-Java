@@ -121,20 +121,20 @@ class Main {
     Transacao t = new Transacao();
 
     System.out.println("Estado Inicial:");
-    System.out.printf("Nome de usuário: %s - Saldo: %f", name1, acc1.getSaldo());
-    System.out.printf("\nNome de usuário: %s - Saldo: %f", name2, acc2.getSaldo());
-    System.out.printf("\nNome de usuário: %s - Saldo: %f", name3, acc3.getSaldo());
+    System.out.printf("Nome de usuário: %s - Saldo: %.2f", name1, acc1.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %.2f", name2, acc2.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %.2f", name3, acc3.getSaldo());
 
     String st = t.getTransacaoString(1, name1, 250);
     String trans = t.realizarTransferencia(acc2, acc1, st);
     String trans1 = t.realizarTransferencia(acc3, acc1, st);
 
-    String st1 = t.getTransacaoString(1, name2, 1000);
+    String st1 = t.getTransacaoString(2, name2, 1000);
     String trans2 = t.realizarTransferencia(acc3, acc2, st1);
 
     System.out.println("\nEstado Final:");
-    System.out.printf("Nome de usuário: %s - Saldo: %f", name1, acc1.getSaldo());
-    System.out.printf("\nNome de usuário: %s - Saldo: %f", name2, acc2.getSaldo());
-    System.out.printf("\nNome de usuário: %s - Saldo: %f", name3, acc3.getSaldo());
+    System.out.printf("Nome de usuário: %s - Saldo: %.2f", name1, acc1.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %.2f", name2, acc2.getSaldo());
+    System.out.printf("\nNome de usuário: %s - Saldo: %.2f", name3, acc3.getSaldo());
   } 
 }
